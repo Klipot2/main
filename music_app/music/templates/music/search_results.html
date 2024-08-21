@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Music App</h1>
+<form action="{% url 'search' %}" method="get">
+    <input type="text" name="query" placeholder="Search for music, artists, albums..." required>
+    <button type="submit">Search</button>
+</form>
+
+<div>
+    <h2>Tracks</h2>
+    <ul>
+        {% for track in tracks %}
+        <li>{{ track.title }} - {{ track.album.artist.name }}</li>
+        {% empty %}
+        <li>No tracks found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Albums</h2>
+    <ul>
+        {% for album in albums %}
+        <li>{{ album.title }} by {{ album.artist.name }}</li>
+        {% empty %}
+        <li>No albums found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Artists</h2>
+    <ul>
+        {% for artist in artists %}
+        <li>{{ artist.name }}</li>
+        {% empty %}
+        <li>No artists found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

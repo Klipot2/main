@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    <h2>Tracks</h2>
+    <ul>
+        {% for track in tracks %}
+            <li>{{ track.title }} - {{ track.album.artist.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Albums</h2>
+    <ul>
+        {% for album in albums %}
+            <li>{{ album.title }} by {{ album.artist.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Artists</h2>
+    <ul>
+        {% for artist in artists %}
+            <li>{{ artist.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
