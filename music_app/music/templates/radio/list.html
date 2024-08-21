@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Radio Stations</h1>
+<p>Select a station to start listening:</p>
+
+<ul>
+    {% for station in stations %}
+    <li>
+        <h3><a href="{% url 'radio_detail' pk=station.pk %}">{{ station.name }}</a></h3>
+        <p>Genre: {{ station.genre }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if not stations %}
+    <p>No radio stations available at the moment. Please check back later.</p>
+{% endif %}
+{% endblock %}

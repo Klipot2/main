@@ -39,7 +39,16 @@ class Playlist(models.Model):
 
     def __str__(self):
         return f"{self.name} by {self.user.username}"
+    
+class RadioStation(models.Model):
+    name = models.CharField(max_length=100)
+    stream_url = models.URLField()
+    genre = models.CharField(max_length=50)
+    description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.name
+    
 # class Rating(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 #     track = models.ForeignKey(Track, on_delete=models.CASCADE)

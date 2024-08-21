@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Artist, Album, Track, Genre, Playlist
+from .models import Artist, Album, Track, Genre, Playlist, RadioStation
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
@@ -27,6 +27,8 @@ class GenreAdmin(admin.ModelAdmin):
 class PlaylistAdmin(admin.ModelAdmin):
     list_display = ('name', 'user')
     search_fields = ('name', 'user__username')
+
+admin.site.register(RadioStation)
 
 # @admin.register(Rating)
 # class RatingAdmin(admin.ModelAdmin):

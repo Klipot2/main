@@ -1,5 +1,6 @@
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
-from .models import Track, Album, Artist, Playlist
+from .models import Track, Album, Artist, Playlist, RadioStation
 
 def index(request):
     query = request.GET.get('query', '')
@@ -49,3 +50,12 @@ def favorites(request):
 
     favorite_tracks = request.user.favorite_tracks.all()
     return render(request, 'favorites.html', {'favorite_tracks': favorite_tracks})
+
+
+def radio_list(request):
+    stations = RadioStation.objects.all()
+    return render(request, 'radio/list.html', {'stations': stations})
+
+def radio_detail(request, pk):
+    station = get_object_or_404(RadioStation, pk=pk)
+    return render(request, 'radio/detail.html', {'station': station})

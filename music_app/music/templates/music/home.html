@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Welcome to Music App</h1>
-<p>Start exploring music by using the search below.</p>
+<p>Start exploring music by using the search below or check out our radio stations.</p>
 
 <!-- Форма поиска -->
 <form action="{% url 'index' %}" method="get">
@@ -39,4 +39,11 @@
         {% endfor %}
     </ul>
 {% endif %}
+
+<!-- Ссылки на другие разделы -->
+<ul>
+    <li><a href="{% url 'favorites' %}">View Favorites</a></li>
+    <li><a href="{% url 'radio_list' %}">Listen to Radio Stations</a></li> <!-- Ссылка на радио -->
+</ul>
+
 {% endblock %}
